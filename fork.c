@@ -13,13 +13,13 @@ int main(){
   if (a!=0)
     a = fork();
   if(a==0){
-    printf("I am the child with pid:%d. My parent's pid is:%d\n",getpid(),getppid());
+    printf("I am the child with pid:%d. My parent's pid is:%d.",getpid(),getppid());
     int randFile = open("/dev/random", O_RDONLY);
     int sTime;
     read(randFile, &sTime, sizeof(int));
     close(randFile);
     sTime = (abs(sTime) % 16) + 5;
-    printf("Sleep time: %d\n", sTime);
+    printf("I'm going to sleep for: %d seconds.\n", sTime);
     sleep(sTime);
     printf("I'm the child and I finished.\n");
     return sTime;
@@ -29,9 +29,9 @@ int main(){
     int cid=wait(&status);
     if(WIFEXITED(status)) {
             int sec = WEXITSTATUS(status);
-	    printf( " Child %d is finished. It slept for %d seconds.", cid, sec);		
+	    printf( " Child %d is finished. It slept for %d seconds.\n", cid, sec);		
         }
-    printf( "Parent is done and pr\n\n" );
+    printf( "Parent is done and program ending.\n\n" );
   } 
   return 0;
 }
