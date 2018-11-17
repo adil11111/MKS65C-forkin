@@ -21,7 +21,7 @@ int main(){
     sTime = (abs(sTime) % 16) + 5;
     printf("I'm going to sleep for: %d seconds.\n", sTime);
     sleep(sTime);
-    printf("I'm the child and I finished.\n");
+    printf("\nI'm the child and I finished.\n");
     return sTime;
   }
   if(a!=0){
@@ -29,7 +29,7 @@ int main(){
     int cid=wait(&status);
     if(WIFEXITED(status)) {
             int sec = WEXITSTATUS(status);
-	    printf( " Child %d is finished. It slept for %d seconds.\n", cid, sec);		
+	    printf( "I am the parent and my child %d is finished. It slept for %d seconds.\n", cid, sec);		
         }
     printf( "Parent is done and program ending.\n\n" );
   } 
