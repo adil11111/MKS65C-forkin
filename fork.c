@@ -19,11 +19,11 @@ int main(){
     printf("I am the child with pid:%d. My parent's pid is:%d\n",getpid(),getppid());
     int sTime;
     int randFile = open("/dev/random", O_RDONLY);
-    read(file, &sTime, sizeof(int));
+    read(randFile, &sTime, sizeof(int));
     close(randFile);
     sTime = (abs(sTime) % 16) + 5;
     printf("Sleep time: %d\n", sTime);
-    sleep(sleep_time);
+    sleep(sTime);
     printf("I'm the child and I finished.\n");
   }
   
