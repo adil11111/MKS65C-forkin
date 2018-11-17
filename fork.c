@@ -8,8 +8,12 @@ int main(){
   printf("I am the parent with pid:%d\n\n",getpid());
   fork();
   fork();
+  int childid;
   if (getpid()!=id && getppid()==id ){
-    printf("I am the child with pid:%d\nMy parent's pid is:\n",getpid(),getppid());
+    childid=getpid();
+  }
+  if(getpid()==childid){
+    printf("I am the child with pid:%d\nMy parent's pid is:%d\n",getpid(),getppid());
   }
   return 0;
 }
